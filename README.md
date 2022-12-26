@@ -69,3 +69,38 @@ python curl_http.py 45800 "query=select title, subject from in0_summary_ where i
 
 ![3293821693450208](https://user-images.githubusercontent.com/590717/206684715-5ab1df49-f919-4d8e-85ee-58b364edef31.jpg)
 
+
+## 编译过程
+进入提供的docker，在aios的各个目录下对模块进行单独编译，
+```
+scons
+```
+
+— 优先index_lib编译，index_lib是建立索引结构的服务 —
+alog目录：/ha3_depends/usr/local/lib64
+# modify by youhe.chen
+env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/'])
+env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/'])
+# ---
+调整Sconscript里lib顺序
+
+— build_service编译，build_service是离线建立索引的服务 —
+Cd ~/havenask
+
+Put Protoc and add exec into sys PATH
+```
+export PATH=$PATH:/ha3_depends/usr/local/bin
+```
+change ld path
+```
+sudo cat "/ha3_depends/usr/local/lib" > /etc/ld.so.conf.d/protobuf.conf
+sudo ldconfig
+```
+
+在aios/build_service/build_service/tools/partition_split_merger/SConscript里添加了依赖库
+env.aCheckLibrary('swift_client_minimal')
+
+— plugin_platform/indexer_plugins/aitheta_indexer 编译 —
+缺少文件aitheta/index_framework.h，无法编译
+
+- ha3编译

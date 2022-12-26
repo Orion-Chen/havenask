@@ -45,6 +45,11 @@ if env['heapchecktype'] == 'asan' and 'clang' in env['CXX']:
     env.AppendUnique(CXXFLAGS='-fsanitize=address')
     env.AppendUnique(LINKFLAGS = '-fsanitize=address')
 
+# modify by youhe.chen
+env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/'])
+env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/'])
+# ---
+
 env.aCheckLibraryPrependLib('pthread')
 env.aCheckLibraryPrependLib('dl')
 env.aCheckLibraryPrependLib('rt')
@@ -57,10 +62,10 @@ env.aCheckLibraryPrependLib('snappy')
 env.aCheckLibraryPrependLib('lz4')
 env.aCheckLibraryPrependLib('z')
 env.aCheckLibraryPrependLib('zstd')
-env.aCheckLibraryPrependLib('fslib-framework')
 env.aCheckLibraryPrependLib('future_lite')
-env.aCheckLibraryPrependLib('kmonitor_adapter')
 env.aCheckLibraryPrependLib('kmonitor_client')
+env.aCheckLibraryPrependLib('kmonitor_adapter')
+env.aCheckLibraryPrependLib('fslib-framework')
 env.aCheckLibraryPrependLib('beeper-framework')
 
 if env['heapchecktype'] == 'tcmalloc':

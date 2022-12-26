@@ -9,6 +9,7 @@ partition_split_merger_sources = [
     'PartitionSplitMerger.cpp',
     'PartitionSplitChecker.cpp',
 ]  + env['build_signature_src']
+env.aCheckLibrary('swift_client_minimal')
 
 env.aLibrary(target = 'partition_split_merger',
              source = partition_split_merger_sources)

@@ -43,7 +43,7 @@ env.addOptions(EnumVariable('build_signature', 'if you want to add build signatu
 env.addOptions(EnumVariable('enable_internal_executor', 'enable indexlib internal executor', 'no',
                             allowed_values=('yes', 'no')))
 
-env.Append(CCFLAGS = '-Werror')
+# env.Append(CCFLAGS = '-Werror')
 
 env.SConscript(
     dirs='.',

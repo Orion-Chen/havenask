@@ -18,11 +18,18 @@ env.Append(LIBPATH=[env['install_root'] + "/usr/local/proxima/arch/broadwell/rel
 env.aACSubst(target = ['aitheta_indexer/test/test.h'],
              source = ['aitheta_indexer/test/test.h.in'])
 
+# modify by youhe.chen
+env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/','/home/youhe.chen/havenask/aios/indexlib/'])
+env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/','/home/youhe.chen/havenask/aios/indexlib/build/release64/lib/'])
+# ---
+
 env.aCheckLibraryPrependLib('pthread')
 env.aCheckLibraryPrependLib('dl')
 env.aCheckLibraryPrependLib('alog')
 env.aCheckLibraryPrependLib('protobuf')
 env.aCheckLibraryPrependLib('autil')
+env.aCheckLibraryPrependLib('kmonitor_client')
+env.aCheckLibraryPrependLib('kmonitor_adapter')
 env.aCheckLibraryPrependLib('fslib-framework')
 
 env.Append(CCFLAGS='-std=c++14')

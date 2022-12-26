@@ -15,7 +15,7 @@ depend_prefix = [install_root + install_prefix, install_root + '/usr/',
 #paths of dependent xxx files which are not in %depend_prefix%/xxx
 #can be given by the follow options. (xxx = include or lib)
 #depend_includedir = []
-depend_libdir = ['/opt/taobao/java/jre/lib/amd64/server/']
+depend_libdir = ['/opt/taobao/java/jre/lib/amd64/server/','/ha3_depends/usr/local/lib64']
 
 heapchecktype = 'none'
 mode = 'release'

@@ -26,12 +26,17 @@ env.aACSubst(target = ['build_service/test/test.h'],
 env.aACSubst(target = ['#tools/bs_tools/version.py'],
              source = ['#tools/bs_tools/version.py.in'])
 
+# modify by youhe.chen
+env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/','/home/youhe.chen/havenask/aios/indexlib/'])
+env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/','/home/youhe.chen/havenask/aios/indexlib/build/release64/lib/'])
+# ---
 
 if env['heapchecktype'] == 'tcmalloc':
     env.aCheckLibraryNotAutoAdd('tcmalloc')
 
 if env['use_tcmalloc'] == 'yes':
     env.aCheckLibraryPrependLib('tcmalloc')
+
 
 env.aCheckLibrary('pthread')
 env.aCheckLibrary('dl')
@@ -42,15 +47,21 @@ env.aCheckLibrary('beeper-framework')
 env.aCheckLibrary('anet')
 env.aCheckLibrary('protobuf')
 env.aCheckLibrary('arpc')
+env.aCheckLibrary('kmonitor_client')
+env.aCheckLibrary('kmonitor_adapter')
 env.aCheckLibrary('fslib-framework')
 env.aCheckLibrary('snappy')
+env.aCheckLibrary('future_lite')
 env.aCheckLibrary('indexlib')
-
+env.aCheckLibrary('zookeeper_mt')
 env.aCheckLibraryNotAutoAdd('swift_client_minimal')
 #env.aCheckLibraryNotAutoAdd('AliWS')
 env['not_prepend_lib'] = ['swift_client_minimal', 'hiredis',
                           'z']
 
+env.aCheckLibrary('mxml')
+env.aCheckLibrary('cm_basic')
+env.aCheckLibrary('http_arpc')
 env['bs_worker_lib'] = ['worker_framework', 'cm_basic', 'mxml', 'zookeeper_mt', 'hippo']
 env.aCheckLibraryNotAutoAdd(*env['bs_worker_lib'])
 

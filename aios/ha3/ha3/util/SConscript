@@ -32,9 +32,9 @@ env.aLibrary(target = 'ha3_util',
 
 env.aProgram(target = 'json_validator',
              source = ['JsonValidator.cpp'],
-             LIBS = ['snappy', 'arpc', 'kvtracer', 'fslib-framework',
+             LIBS = ['crypto','ssl','snappy', 'arpc', 'kvtracer','kmonitor_client','kmonitor_adapter','fslib-framework',
                      'zookeeper_mt', 'autil', 'protobuf', 'anet', 'alog',
-                     'mxml', 'pthread', 'z', 'dl', 'expat', 'suez_turing', 'amonitor_client'])
+                     'mxml', 'pthread', 'z', 'dl', 'expat','tensorflow_cc','swift_client_minimal','access_log','http_arpc','multi_call','cava_llvm','cava','worker_framework','suez','hiredis','hippo','build_service','future_lite','beeper-framework','indexlib','matchdoc','resource_reader', 'suez_turing', 'amonitor_client'])
 
 env.aDirs('test')
 #env.aDirs('perftest')

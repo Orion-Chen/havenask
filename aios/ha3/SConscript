@@ -90,6 +90,11 @@ env['test_conf_depend'] = [
                  source = ['testdata/configuration/qrs.json.in']),
 ]
 
+# modify by youhe.chen
+env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/','/home/youhe.chen/havenask/aios/indexlib/','/home/youhe.chen/havenask/aios/build_service/','/ha3_depends/usr/local/include/eigen3/','/home/youhe.chen/havenask/aios/build_service/build/release64/'])
+env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/','/home/youhe.chen/havenask/aios/indexlib/build/release64/lib/','/home/youhe.chen/havenask/aios/build_service/build/release64/lib/'])
+# ---
+
 env.aDuplicate('testdata/configuration/schemas/auction_schema.json')
 env.aDuplicate('testdata/configuration/service.json')
 
@@ -97,6 +102,14 @@ env.aCheckLibrary('pthread')
 env.aCheckLibrary('z')
 env.aCheckLibrary('dl')
 env.aCheckLibrary('expat')
+env.aCheckLibrary('alog')
+env.aCheckLibrary('autil')
+env.aCheckLibrary('beeper-framework')
+env.aCheckLibrary('anet')
+env.aCheckLibrary('protobuf')
+env.aCheckLibrary('arpc')
+env.aCheckLibrary('zookeeper_mt')
+env.aCheckLibraryNotAutoAdd('swift_client_minimal')
 
 
 if env['heapchecktype'] == 'tcmalloc':
@@ -151,7 +164,6 @@ env['all_ha3_libs'] = [
 env['depend_static_libs'] =  env['all_ha3_libs']
 
 env['depend_dynamic_libs'] = [
-    'suez_turing',
     'suez',
     'build_service',
     'indexlib',
@@ -165,10 +177,10 @@ env['depend_dynamic_libs'] = [
     'cava',
     'hippo',
     'multi_call',
-    'fslib-framework',
     'amonitor_client',
     'kmonitor_client',
     'kmonitor_adapter',
+    'fslib-framework',
     'resource_reader',
     'cm_basic',
     'cm_sub',
@@ -196,6 +208,7 @@ env['depend_dynamic_libs'] = [
     'zookeeper_mt',
     'tensorflow_cc',
     'absl_strings',
+    'suez_turing',
 ]
 
 

@@ -48,11 +48,11 @@ env.addOptions(EnumVariable('build_signature', 'if you want to add build signatu
 env.addOptions(EnumVariable('gen_build_spec', 'if you want to generate _build.spec', 'no',
                             allowed_values=('yes', 'no')))
 
-print env['CXX']
-if 'clang' not in env['CXX']:
-    env.Append(CCFLAGS = '-Werror')
-else:
-    env.Append(CCFLAGS = '-Wall')
+# print env['CXX']
+# if 'clang' not in env['CXX']:
+#     env.Append(CCFLAGS = '-Werror')
+# else:
+#     env.Append(CCFLAGS = '-Wall')
 
 if env['gen_build_spec'] == 'yes':
     genBuildSpec()
