@@ -78,10 +78,13 @@ scons
 
 — 优先index_lib编译，index_lib是建立索引结构的服务 —
 alog目录：/ha3_depends/usr/local/lib64
+加入以下代码在Sconsript中
+```
 # modify by youhe.chen
 env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/'])
 env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/'])
 # ---
+```
 调整Sconscript里lib顺序
 
 — build_service编译，build_service是离线建立索引的服务 —
