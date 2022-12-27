@@ -77,7 +77,8 @@ scons
 ```
 
 — 优先index_lib编译，index_lib是建立索引结构的服务 —
-alog目录：/ha3_depends/usr/local/lib64
+
+1. alog目录：/ha3_depends/usr/local/lib64
 加入以下代码在Sconsript中
 ```
 # modify by youhe.chen
@@ -85,25 +86,29 @@ env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/
 env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/'])
 # ---
 ```
-调整Sconscript里lib顺序
+2. 调整Sconscript里lib顺序
+
+3. 执行scons
 
 — build_service编译，build_service是离线建立索引的服务 —
-Cd ~/havenask
+0. 依赖index_lib
 
-Put Protoc and add exec into sys PATH
+1. Put Protoc and add exec into sys PATH，需要protoc来编译proto文件
 ```
 export PATH=$PATH:/ha3_depends/usr/local/bin
 ```
-change ld path
+2. change ld path，修改LDconfig
 ```
 sudo cat "/ha3_depends/usr/local/lib" > /etc/ld.so.conf.d/protobuf.conf
 sudo ldconfig
 ```
 
-在aios/build_service/build_service/tools/partition_split_merger/SConscript里添加了依赖库
+3. 在aios/build_service/build_service/tools/partition_split_merger/SConscript里添加了依赖库
 env.aCheckLibrary('swift_client_minimal')
 
+4. 执行scons
 — plugin_platform/indexer_plugins/aitheta_indexer 编译 —
 缺少文件aitheta/index_framework.h，无法编译
 
-- ha3编译
+- ha3编译 -
+0. 依赖index_lib和build_service编译

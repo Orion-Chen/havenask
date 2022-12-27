@@ -27,8 +27,8 @@ env.aACSubst(target = ['#tools/bs_tools/version.py'],
              source = ['#tools/bs_tools/version.py.in'])
 
 # modify by youhe.chen
-env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/','/home/youhe.chen/havenask/aios/indexlib/'])
-env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/','/home/youhe.chen/havenask/aios/indexlib/build/release64/lib/'])
+env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/',env['TOP_DIR']+'/../indexlib/'])
+env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/',env['TOP_DIR']+'/../indexlib/build/release64/lib/'])
 # ---
 
 if env['heapchecktype'] == 'tcmalloc':

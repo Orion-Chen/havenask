@@ -36,6 +36,8 @@ env.__class__.aSync = aSync
 # Make a copy of the environment, so my changes are limited in this directory and sub-directories.
 env = env.Clone()
 
+print "build_dir:",env['RELATIVE_BUILD_DIR']
+print "top_dir:",env['TOP_DIR']
 env.Append(ACSUBST = {'BUILDDIR': env['RELATIVE_BUILD_DIR']})
 env.Append(ACSUBST = {'TOP_BUILDDIR': env['RELATIVE_BUILD_DIR']})
 env.Append(ACSUBST = {'TOP_SRCDIR': env['TOP_DIR']})
@@ -91,8 +93,8 @@ env['test_conf_depend'] = [
 ]
 
 # modify by youhe.chen
-env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/','/home/youhe.chen/havenask/aios/indexlib/','/home/youhe.chen/havenask/aios/build_service/','/ha3_depends/usr/local/include/eigen3/','/home/youhe.chen/havenask/aios/build_service/build/release64/'])
-env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/','/home/youhe.chen/havenask/aios/indexlib/build/release64/lib/','/home/youhe.chen/havenask/aios/build_service/build/release64/lib/'])
+env.Append(CPPPATH=['/ha3_depends/usr/local/include/','/ha3_depends/usr/include/',env['TOP_DIR']+'/../indexlib/',env['TOP_DIR']+'/../build_service/','/ha3_depends/usr/local/include/eigen3/',env['TOP_DIR']+'/../build_service/build/release64/'])
+env.Append(LIBPATH=['/ha3_depends/usr/local/lib64','/ha3_depends/usr/local/lib','/ha3_depends/usr/lib64/',env['TOP_DIR']+'/../indexlib/build/release64/lib/',env['TOP_DIR']+'/../build_service/build/release64/lib/'])
 # ---
 
 env.aDuplicate('testdata/configuration/schemas/auction_schema.json')
